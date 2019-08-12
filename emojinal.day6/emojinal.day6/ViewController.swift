@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 let emojis = ["😴": "sleepy monday", "🤗": "energetic"]
-
+    let customMessages = [
+        "sleepy monday":["Come on! You can get throught the day!","Grab a cup of coffee.", "Maybe you should go to sleep earlier."],
+        "energetic": ["So glad you are feeling energized!!", "Keep this energy up!", "Spread this energy with your friends."] ]
     
     
     override func viewDidLoad() {
@@ -23,10 +25,12 @@ let emojis = ["😴": "sleepy monday", "🤗": "energetic"]
 // let alertController = UIAlertController(title: "\(titleText)", message: "\(messageText)", preferredStyle: UIAlertController.Style.alert)
     
     if let selectedEmotion = sender.titleLabel?.text {
-        let titleText = "Sleepy Monday"
-        let messageText = "Come on! You can get through the day!"
+        let titleText = "Welcome to Emojinal"
+        let number = Int.random(in : 0...2)
+        let emojiMessage = customMessages[emojis[selectedEmotion]!]?[number]
         
-        let alertController = UIAlertController(title:"\(titleText)", message: "\(messageText)", preferredStyle:UIAlertController.Style.alert)
+        
+        let alertController = UIAlertController(title:"\(titleText)", message: "\(emojiMessage!)", preferredStyle:UIAlertController.Style.alert)
         
      alertController.addAction(UIAlertAction(title: "OK", style:UIAlertAction.Style.default, handler: nil))
         present(alertController, animated: true, completion:nil)
